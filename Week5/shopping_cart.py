@@ -1,9 +1,3 @@
-"""A small example of a shopping cart.
-
-Each cart has its own items list. add_item() stores each product's name,
-price, and quantity, while calculate_total() returns the cart's total.
-Keeping the list on each cart makes two cart instances independent.
-"""
 
 class ShoppingCart:
     def __init__(self):
@@ -14,7 +8,7 @@ class ShoppingCart:
         
     def calculate_total(self):
         total = 0
-        for price, quantity in self.items:
+        for _, price, quantity in self.items:
             total += price * quantity
         return total
     
