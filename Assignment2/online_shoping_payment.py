@@ -1,5 +1,4 @@
 class Product:
-
     def __init__(self, item_id, item_name, base_price):
         self.item_id = item_id
         self.item_name = item_name
@@ -7,13 +6,11 @@ class Product:
 
     def calculate_price(self):
         return self.base_price
-
     def get_info(self):
         return "{} -> PKR {}".format(self.item_name, self.calculate_price())
 
 
 class PhysicalProduct(Product):
-
     def __init__(self, item_id, item_name, base_price, shipping_fee):
         super().__init__(item_id, item_name, base_price)
         self.shipping_fee = shipping_fee
@@ -28,7 +25,6 @@ class PhysicalProduct(Product):
 
 
 class DigitalProduct(Product):
-
     def __init__(self, item_id, item_name, base_price, discount):
         super().__init__(item_id, item_name, base_price)
         self.discount = discount
@@ -42,9 +38,7 @@ class DigitalProduct(Product):
             self.item_name, self.discount, self.calculate_price()
         )
 
-
 class CardPayment:
-
     def __init__(self, card_num, owner_name):
         self.card_num = card_num
         self.owner_name = owner_name
@@ -62,8 +56,6 @@ class CardPayment:
         print("Total Paid  : PKR {}".format(final_bill))
         print("Status      : Payment Successful!")
         return True
-
-
 class CashOnDelivery:
 
     def __init__(self, address):
@@ -80,7 +72,6 @@ class CashOnDelivery:
         print("Collect Cash: PKR {}".format(final_bill))
         print("Status      : Order Placed (Pending Cash Collection)")
         return True
-
 
 class Order:
 
@@ -104,7 +95,6 @@ class Order:
         if not self.items_list:
             print("Cart is empty.")
             return
-
         count = 1
         for item in self.items_list:
             print("{}. {}".format(count, item.get_info()))
@@ -130,9 +120,7 @@ catalog = {
     "3": PhysicalProduct("P102", "Book", 800, 150),
     "4": DigitalProduct("D102", "Online Course", 3000, 15),
 }
-
 user_order = Order("1001")
-
 while True:
     print("\n==========================================")
     print("      ONLINE SHOPPING SYSTEM MENU         ")
@@ -186,13 +174,11 @@ while True:
             payment = CashOnDelivery(address)
             user_order.checkout(payment)
             break
-
         else:
             print("Invalid payment choice.")
 
     elif choice == "5":
         print("\nExiting system.")
         break
-
     else:
         print("Invalid choice, enter a number from 1 to 5.")
